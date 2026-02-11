@@ -16,7 +16,13 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 vim.keymap.set("n", "<space>q", ":q<CR>")
 vim.keymap.set("n", "<space>w", ":w<CR>")
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
-
+vim.keymap.set("n", "<space>b", ":!cmake --build build<CR>")
+vim.keymap.set("n", "<space>cd", function()
+  local dir = vim.fn.expand("%:p:h")
+  if dir ~= "" then
+    vim.cmd.cd(dir)
+  end
+end, { desc = "cd to current buffer directory" })
 vim.api.nvim_create_autocmd('UIEnter', {
   callback = function()
     vim.o.clipboard = 'unnamedplus'

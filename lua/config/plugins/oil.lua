@@ -15,6 +15,14 @@ return {
       require("oil").setup({
         use_devicons = false,
         icons = mini_icons.icons,
+        keymaps = {
+          ["<leader>cd"] = {
+            "actions.cd",
+            opts = {
+              silent = false,
+            }
+          }
+        }
       })
     end,
   }
