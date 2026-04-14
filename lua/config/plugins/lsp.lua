@@ -18,6 +18,8 @@ return {
       vim.lsp.enable("lua_ls")
       vim.lsp.config("clangd", { capabilities = capabilities })
       vim.lsp.enable("clangd")
+      vim.lsp.config("ruff", { capabilities = capabilities })
+      vim.lsp.enable("ruff")
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
