@@ -20,6 +20,8 @@ return {
       vim.lsp.enable("clangd")
       vim.lsp.config("ruff", { capabilities = capabilities })
       vim.lsp.enable("ruff")
+      vim.lsp.config("marksman", { capabilities = capabilities })
+      vim.lsp.enable("marksman")
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
