@@ -1,9 +1,11 @@
 require("config.lazy")
+require('mini.pairs').setup()
 
 vim.g.mapleader = ' '
 vim.o.number = true
 vim.o.relativenumber = true
 vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.cursorline = true
@@ -17,12 +19,15 @@ vim.keymap.set("n", "<space>q", ":q<CR>")
 vim.keymap.set("n", "<space>w", ":w<CR>")
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 vim.keymap.set("n", "<space>b", ":!cmake --build build<CR>")
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+
 vim.keymap.set("n", "<space>cd", function()
   local dir = vim.fn.expand("%:p:h")
   if dir ~= "" then
     vim.cmd.cd(dir)
   end
 end, { desc = "cd to current buffer directory" })
+
 vim.api.nvim_create_autocmd('UIEnter', {
   callback = function()
     vim.o.clipboard = 'unnamedplus'
