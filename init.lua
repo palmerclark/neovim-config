@@ -28,6 +28,21 @@ vim.keymap.set("n", "<space>cd", function()
   end
 end, { desc = "cd to current buffer directory" })
 
+vim.api.nvim_create_autocmd('VimLeave', {
+  desc = 'Writes the current working directory to a file on close.',
+  callback = function()
+    local file = os.getenv("NVIM_CD_FILE")
+    if file then
+      local modifier = io.open(file, "w")
+      if modifier then
+        modifier:write(vim.fn.getcwd())
+        modifier:close()
+      end
+    end
+  end
+}
+)
+
 vim.api.nvim_create_autocmd('UIEnter', {
   callback = function()
     vim.o.clipboard = 'unnamedplus'
