@@ -22,6 +22,8 @@ return {
       vim.lsp.enable("ruff")
       vim.lsp.config("marksman", { capabilities = capabilities })
       vim.lsp.enable("marksman")
+      vim.lsp.config("typescript-language-server", { capabilities = capabilities })
+      vim.lsp.enable("typescript-language-server")
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
